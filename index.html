@@ -73,10 +73,10 @@
                         <a class="text-sm font-medium text-text-muted hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:h-[1px] after:w-0 after:bg-secondary after:transition-all hover:after:w-full"
                             href="#methodology">Metodologías</a>
                     </div>
-                    <button
-                        class="hidden md:flex cursor-pointer items-center justify-center rounded-full h-11 px-6 bg-white text-background-dark text-sm font-bold tracking-wide hover:bg-primary hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    <a class="hidden md:flex cursor-pointer items-center justify-center rounded-full h-11 px-6 bg-white text-background-dark text-sm font-bold tracking-wide hover:bg-primary hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                        href="https://wa.me/message/DFUBBFPJ35PSE1">
                         <span class="truncate">CONTACTANOS</span>
-                    </button>
+                    </a>
                     <!-- Mobile Menu Button -->
                     <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center w-10 h-10 text-white">
                         <span class="material-symbols-outlined text-3xl">menu</span>
@@ -94,10 +94,10 @@
                         href="#work">Proyectos</a>
                     <a class="text-base font-medium text-text-muted hover:text-white transition-colors py-3 border-b border-white/5"
                         href="#methodology">Metodologías</a>
-                    <button
+                    <a href="https://wa.me/message/DFUBBFPJ35PSE1"
                         class="flex cursor-pointer items-center justify-center rounded-full h-11 px-6 bg-white text-background-dark text-sm font-bold tracking-wide hover:bg-primary hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)] mt-4">
                         <span class="truncate">CONTACTANOS</span>
-                    </button>
+                    </a>
                 </nav>
             </div>
         </header>
@@ -475,11 +475,11 @@
                     <!-- CTA Button that appears on hover -->
                     <div id="ctaButton"
                         class="flex justify-center opacity-0 -translate-y-4 transition-all duration-500 pointer-events-none">
-                        <button
+                        <a href="https://wa.me/message/DFUBBFPJ35PSE1"
                             class="flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary to-primary-dark text-white text-lg font-bold rounded-full shadow-[0_0_30px_rgba(60,129,201,0.3)] hover:shadow-[0_0_50px_rgba(60,129,201,0.5)] hover:-translate-y-1 transition-all duration-300">
                             <span>Empieza tu proyecto con nosotros</span>
                             <span class="material-symbols-outlined text-2xl">arrow_forward</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -490,10 +490,10 @@
                     <p class="text-xl text-text-muted max-w-lg">Construyamos algo increíble juntos. Estamos listos para
                         ayudarte a dar el siguiente paso.</p>
                     <div class="flex flex-col sm:flex-row gap-4 mt-6 w-full sm:w-auto">
-                        <button
+                        <a href="https://wa.me/message/DFUBBFPJ35PSE1"
                             class="flex items-center justify-center rounded-full h-14 px-10 bg-white text-background-dark text-lg font-bold shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:bg-primary hover:text-white hover:shadow-[0_0_30px_rgba(217,140,74,0.4)] transition-all duration-300 w-full sm:w-auto">
                             Iniciar un proyecto
-                        </button>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -521,7 +521,8 @@
                         <div class="flex gap-3 mt-2">
                             <a aria-label="Facebook"
                                 class="group flex items-center justify-center w-11 h-11 rounded-full bg-white/5 border border-white/10 text-text-muted hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
-                                href="https://www.facebook.com/profile.php?id=61586124395974&locale=es_LA" target="_blank" rel="noopener noreferrer">
+                                href="https://www.facebook.com/profile.php?id=61586124395974&locale=es_LA"
+                                target="_blank" rel="noopener noreferrer">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path
                                         d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -586,19 +587,40 @@
             });
         });
 
-        // Methodology cards hover effect for CTA button
         const methodologyCards = document.querySelectorAll('.methodology-card');
         const ctaButton = document.getElementById('ctaButton');
+        const methodologySection = document.getElementById('methodology');
         let isHovering = false;
 
-        methodologyCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                isHovering = true;
-                ctaButton.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
-                ctaButton.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        // Check if device is mobile (no hover capability)
+        const isMobile = window.matchMedia('(hover: none)').matches;
+
+        // Desktop behavior: show button on card hover
+        if (!isMobile) {
+            methodologyCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    isHovering = true;
+                    ctaButton.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+                    ctaButton.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    isHovering = false;
+                    setTimeout(() => {
+                        if (!isHovering) {
+                            ctaButton.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+                            ctaButton.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                        }
+                    }, 300);
+                });
             });
 
-            card.addEventListener('mouseleave', () => {
+            // Keep button visible when hovering over it
+            ctaButton.addEventListener('mouseenter', () => {
+                isHovering = true;
+            });
+
+            ctaButton.addEventListener('mouseleave', () => {
                 isHovering = false;
                 setTimeout(() => {
                     if (!isHovering) {
@@ -607,22 +629,26 @@
                     }
                 }, 300);
             });
-        });
+        } else {
+            // Mobile behavior: show button when methodology section is visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Section is visible, show button
+                        ctaButton.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+                        ctaButton.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                    } else {
+                        // Section is not visible, hide button
+                        ctaButton.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+                        ctaButton.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                    }
+                });
+            }, {
+                threshold: 0.3 // Show button when 30% of section is visible
+            });
 
-        // Keep button visible when hovering over it
-        ctaButton.addEventListener('mouseenter', () => {
-            isHovering = true;
-        });
-
-        ctaButton.addEventListener('mouseleave', () => {
-            isHovering = false;
-            setTimeout(() => {
-                if (!isHovering) {
-                    ctaButton.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
-                    ctaButton.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-                }
-            }, 300);
-        });
+            observer.observe(methodologySection);
+        }
     </script>
 
 </body>
